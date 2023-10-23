@@ -10,6 +10,11 @@ from habits.serializers import HabitSerializer
 class HabitCreateAPIView(generics.CreateAPIView):
     serializer_class = HabitSerializer
 
+    def perform_create(self, serializer):
+        new_habit = serializer.save(user=self.request.user)
+        new_habit.user = self.request.user
+        new_habit.save()
+
 
 class HabitListAPIView(generics.ListAPIView):
     serializer_class = HabitSerializer
