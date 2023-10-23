@@ -20,7 +20,7 @@ class Habit(models.Model):
     period = models.CharField(choices=PERIOD_CHOICES, default='everyday', max_length=20, verbose_name='периодичность')
     reward = models.CharField(max_length=255, verbose_name='вознаграждение')
     duration = models.DurationField(verbose_name='время на выполнение')
-    is_published = models.BooleanField(default=False, verbose_name='признак публикации')
+    is_public = models.BooleanField(default=False, verbose_name='признак публикации')
 
     def __str__(self):
         return self.action
