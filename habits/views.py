@@ -25,3 +25,4 @@ class HabitPublicListAPIView(generics.ListCreateAPIView):
 class HabitUpdateAPIView(generics.UpdateAPIView):
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
+    permission_classes = [IsOwner,]
