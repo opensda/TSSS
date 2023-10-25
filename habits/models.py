@@ -19,7 +19,7 @@ class Habit(models.Model):
     is_pleasant = models.BooleanField(default=False, verbose_name='признак приятной привычки')
     period = models.CharField(choices=PERIOD_CHOICES, default='everyday', max_length=20, verbose_name='периодичность')
     reward = models.CharField(max_length=255, verbose_name='вознаграждение')
-    duration = models.DurationField(verbose_name='время на выполнение')
+    duration = models.PositiveIntegerField(default=120, verbose_name='время на выполнение')
     is_public = models.BooleanField(default=False, verbose_name='признак публикации')
 
     def __str__(self):
