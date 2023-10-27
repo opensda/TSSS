@@ -58,3 +58,18 @@ class HabitTestCase(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_habits_create(self):
+        url = reverse("habits:habits-create")
+        data = {
+            "place": "дом",
+            "time": "18:00:00",
+            "action": "закрыть таску",
+            "reward": "зп",
+            "is_public": True,
+            "user": self.habit.user_id,
+        }
+
+        response = self.client.post(url, data=data)
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
