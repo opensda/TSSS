@@ -4,7 +4,8 @@ from django.db import models
 
 class User(AbstractUser):
     user_id = models.PositiveIntegerField(unique=True, verbose_name='tg id', blank=True, null=True)
-    telegram_username = models.CharField(unique=True, verbose_name='telegram username', max_length=255)
+    telegram_username = models.CharField(unique=True, verbose_name='telegram username', max_length=255, null=True,
+                                         blank=True)
 
     def save(self, *args, **kwargs):
         self.set_password(self.password)
