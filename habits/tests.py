@@ -1,3 +1,5 @@
+from django.urls import reverse
+from rest_framework import status
 from rest_framework.test import APITestCase
 
 from habits.models import Habit
@@ -20,3 +22,10 @@ class HabitTestCase(APITestCase):
             reward="пресс качат",
             user=self.user,
         )
+
+    def test_get_habits(self):
+        url = reverse("habits:habits-list")
+
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
