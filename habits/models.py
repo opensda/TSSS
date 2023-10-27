@@ -4,12 +4,6 @@ from users.models import User
 
 
 class Habit(models.Model):
-    PERIOD_CHOICES = (
-        ('everyday', 'ежедневная'),
-        ('every weekend', 'по выходным'),
-        ('weekdays', 'по будням')
-    )
-
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь')
     place = models.CharField(max_length=255, verbose_name='место')
     time = models.DateTimeField(auto_now_add=True, verbose_name='дата и время')
