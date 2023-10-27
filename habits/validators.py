@@ -47,5 +47,6 @@ class PeriodValidator:
     def __call__(self, value):
         period = value.get(self.field)
 
-        if period > 7:
-            raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
+        if period is not None:
+            if period > 7:
+                raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
