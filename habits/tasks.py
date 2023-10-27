@@ -17,4 +17,5 @@ def send_notifications():
     for habit in habits:
         if habit.time == current_time:
             if habit.user.user_id:
-                bot.send_message(chat_id=habit.user.user_id, text=f'Пришло время привычки: {habit.action}')
+                bot.send_message(chat_id=habit.user.user_id, text=f'Пришло время привычки: {habit.action}. '
+                                                                  f'Привычку необходимо выполнять в {habit.place}.')
