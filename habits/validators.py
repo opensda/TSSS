@@ -38,3 +38,14 @@ class IsPleasantValidator:
 
         if is_pleasant and (related_habit or reward):
             raise ValidationError("Приятная привычка не может иметь связанной привычки или вознаграждения.")
+
+
+class PeriodValidator:
+    def __init__(self, field):
+        self.field = field
+
+    def __call__(self, value):
+        period = dict(value).get(self.field)
+
+        if int(period) > 7:
+            raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
