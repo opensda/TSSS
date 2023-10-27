@@ -51,3 +51,10 @@ class HabitTestCase(APITestCase):
                              ]
                          }
                          )
+
+    def test_get_public_habits(self):
+        url = reverse("habits:habits-public-list")
+
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
