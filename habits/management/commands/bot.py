@@ -25,7 +25,7 @@ def callback_query(call):
         chat_id = call.message.chat.id
         user = User.objects.filter(telegram_username=call.message.chat.username).first()
         if user:
-            user.chat_id = chat_id
+            user.user_id = chat_id
             user.save()
             bot.send_message(chat_id, f'Вы успешно подписались! '
                                       f'Добро пожаловать, {user.username}! '
