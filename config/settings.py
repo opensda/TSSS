@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -171,6 +171,6 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 CELERY_BEAT_SCHEDULE = {
     'send-notifications': {
         'task': 'habits.tasks.send_notifications',
-        'schedule': timedelta(seconds=29),
+        'schedule': timedelta(seconds=31),
     },
 }
