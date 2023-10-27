@@ -28,7 +28,7 @@ def callback_query(call):
             user.chat_id = chat_id
             user.save()
             bot.send_message(chat_id, f'Вы успешно подписались! '
-                                      f'Добро пожаловать! {user.username}'
+                                      f'Добро пожаловать, {user.username}! '
                                       f'Чтобы отписаться от канала, наберите команду /stop')
         else:
             bot.send_message(chat_id, 'Вы не зарегистрированы в приложении "Полезные привычки"!'
@@ -52,4 +52,5 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         bot.enable_save_next_step_handlers(delay=2)
         bot.load_next_step_handlers()
+        print('Бот запущен.')
         bot.infinity_polling()
