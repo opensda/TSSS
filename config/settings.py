@@ -171,6 +171,6 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 CELERY_BEAT_SCHEDULE = {
     'send-notifications': {
         'task': 'habits.tasks.send_notifications',
-        'schedule': timedelta(minutes=1),
+        'schedule': timedelta(seconds=29),
     },
 }
