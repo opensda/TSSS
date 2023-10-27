@@ -29,3 +29,25 @@ class HabitTestCase(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json(), response.json(),
+                         {
+                             "count": 1,
+                             "next": None,
+                             "previous": None,
+                             "results": [
+                                 {
+                                     "id": self.habit.id,
+                                     "place": self.habit.place,
+                                     "time": self.habit.time,
+                                     "action": self.habit.action,
+                                     "is_pleasant": self.habit.is_pleasant,
+                                     "period": self.habit.period,
+                                     "reward": self.habit.reward,
+                                     "duration": self.habit.duration,
+                                     "is_public": self.habit.is_public,
+                                     "user": self.habit.user_id,
+                                     "related_habit": self.habit.related_habit
+                                 }
+                             ]
+                         }
+                         )
