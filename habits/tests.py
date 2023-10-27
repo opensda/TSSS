@@ -1,3 +1,22 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 
-# Create your tests here.
+from habits.models import Habit
+from users.models import User
+
+
+class HabitTestCase(APITestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username="test user",
+            password="12345",
+        )
+        self.client.force_authenticate(user=self.user)
+
+        self.habit = Habit.objects.create(
+            place="турник",
+            time="4:20:00",
+            action="анжумания",
+            reward="пресс качат",
+            user=self.user,
+        )
