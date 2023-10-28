@@ -28,7 +28,7 @@ def callback_query(call):
             user.user_id = chat_id
             user.save()
             bot.send_message(chat_id, f'Вы успешно подписались! '
-                                      f'Добро пожаловать, {user.username}! '
+                                      f'Добро пожаловать, {call.message.chat.first_name}! '
                                       f'Чтобы отписаться от канала, наберите команду /stop')
         else:
             bot.send_message(chat_id, 'Вы не зарегистрированы в приложении "Полезные привычки"!'
