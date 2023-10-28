@@ -98,7 +98,7 @@ class HabitTestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    def test_duration_validator_create(self):
+    def test_duration_validator(self):
         url = reverse("habits:habits-create")
         data = {
             "place": "дом",
@@ -108,6 +108,23 @@ class HabitTestCase(APITestCase):
             "is_public": True,
             "user": self.habit.user_id,
             "duration": 121
+        }
+
+        response = self.client.post(url, data=data)
+
+        self.assertEquals(response.status_code,
+                          status.HTTP_400_BAD_REQUEST)
+
+    def test_period_validator(self):
+        url = reverse("habits:habits-create")
+        data = {
+            "place": "дом",
+            "time": "18:00:00",
+            "action": "закрыть таску",
+            "reward": "зп",
+            "is_public": True,
+            "user": self.habit.user_id,
+            "period": 8
         }
 
         response = self.client.post(url, data=data)
