@@ -74,6 +74,8 @@ class HabitTestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+        self.assertEqual(Habit.objects.all().count(), 2)
+
     def test_update_habits(self):
         url = reverse("habits:habits-update", args=[self.habit.id])
         data = {
