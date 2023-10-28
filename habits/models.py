@@ -14,7 +14,7 @@ class Habit(models.Model):
     period = models.PositiveSmallIntegerField(default=1, verbose_name='периодичность')
     reward = models.CharField(max_length=255, verbose_name='вознаграждение')
     duration = models.PositiveIntegerField(default=120, verbose_name='время на выполнение')
-    is_public = models.BooleanField(default=False, verbose_name='признак публикации')
+    is_public = models.BooleanField(default=False, verbose_name='признак публичности')
 
     def __str__(self):
         return self.action
