@@ -59,7 +59,7 @@ CSRF_TRUSTED_ORIGINS = [
   
   В терминале ввести команду:
   ```
-  git clone https://github.com/toir02/send_mail_project
+  git clone https://github.com/toir02/TaskTracker
 * Установить вирутальное окружение
 
   В терминале ввести команду:
