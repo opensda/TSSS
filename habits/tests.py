@@ -131,3 +131,20 @@ class HabitTestCase(APITestCase):
 
         self.assertEquals(response.status_code,
                           status.HTTP_400_BAD_REQUEST)
+
+    def test_is_pleasant_validator(self):
+        url = reverse("habits:habits-create")
+        data = {
+            "place": "дом",
+            "time": "18:00:00",
+            "action": "закрыть таску",
+            "reward": "зп",
+            "is_pleasant": True,
+            "is_public": True,
+            "user": self.habit.user_id
+        }
+
+        response = self.client.post(url, data=data)
+
+        self.assertEquals(response.status_code,
+                          status.HTTP_400_BAD_REQUEST)
